@@ -1,0 +1,43 @@
+# 🏭 SupplyGuard AI: Supply Chain Disruption Agent (#05)
+
+*A multi-agent system that monitors supplier, inventory, and demand telemetry, correlates small signals into risk assessments, and autonomously recommends alternative suppliers. Built with LangChain.*
+
+## 📌 Overview
+Global supply chains are highly fragile, and a single delayed shipment can cascade into catastrophic factory downtime. Traditional enterprise dashboards are reactive, relying on human managers to manually correlate data across isolated systems. 
+
+**SupplyGuard AI** transforms this paradigm. It acts as an autonomous supply chain control tower, utilizing a decentralized Multi-Agent System (MAS) to actively monitor telemetry, predict disruptions before they manifest, and formulate cost-optimized recovery plans.
+
+## 🧠 The Agentic Workflow (ReAct Loop)
+Unlike static AI chatbots, this system demonstrates genuine agentic behavior through deterministic tool calling. The architecture features a network of specialized personas collaborating sequentially:
+
+1. **Risk & Exception Agent:** Continuously polls simulated supplier APIs to detect anomalies (e.g., delivery volumes dropping below expected baseline thresholds).
+2. **Inventory & Impact Agent:** Ingests flagged anomalies and cross-references them with live inventory ledgers and daily demand burn-rates to calculate the exact "days of inventory remaining."
+3. **Global Sourcing Agent:** Autonomously queries alternative vendor databases, evaluating backup inventory capacity, supplier price premiums, and express logistics costs.
+4. **Decision Orchestrator:** Synthesizes raw data into a unified business-risk assessment and recommends the single most cost-effective recovery plan.
+
+## ⚙️ Tech Stack
+* **AI Orchestration:** LangChain (Multi-Agent System)
+* **Backend:** Python / FastAPI
+* **Frontend:** React / Tailwind CSS
+* **Data Sources:** Simulated JSON Data (Inventory, Suppliers, Logistics)
+
+## 🛡️ Human-in-the-Loop Guardrails
+While the system operates autonomously to identify problems and draft complex supply chain solutions, high-stakes decisions—such as executing a spot-buy at a massive premium or changing primary carriers—are safely escalated to the dashboard. The agent pauses execution and awaits one-click human authorization before committing the final action, ensuring enterprise-grade safety.
+
+## 🚀 How to Run Locally
+
+### 1. Backend Setup (The AI Agents)
+```bash
+# Clone the repository
+git clone [https://github.com/yourusername/supplyguard-ai.git](https://github.com/yourusername/supplyguard-ai.git)
+cd supplyguard-ai
+
+# Create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Start the FastAPI server
+uvicorn main:app --reload
